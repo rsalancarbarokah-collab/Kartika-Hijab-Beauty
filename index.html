@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HijabStore - Toko Pakaian Muslim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4a2c40',
+                        secondary: '#d48c9e',
+                        light: '#fef9fb',
+                        dark: '#2d1b26',
+                        preorder: '#e67e22',
+                        success: '#16a34a',
+                        danger: '#dc2626'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-shopping-bag text-secondary text-2xl"></i>
+                <h1 class="text-2xl font-bold text-primary">Hijab<span class="text-secondary">Store</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#beranda" class="font-medium hover:text-secondary">Beranda</a>
+                <a href="#koleksi" class="font-medium hover:text-secondary">Koleksi</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="cartBtn" class="text-xl hover:text-secondary relative">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-secondary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+                <button class="md:hidden text-xl" id="menuBtn"><i class="fa fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#beranda" class="py-2 border-b hover:text-secondary">Beranda</a>
+                <a href="#koleksi" class="py-2 border-b hover:text-secondary">Koleksi</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-12">
+        <!-- Slider Iklan Atas -->
+        <section id="beranda" class="container mx-auto px-4 mb-10">
+            <div class="ads-slider">
+                <div class="ads-track" id="adsTrack">
+                    <img src="img/banner1.jpg" alt="Iklan 1" class="ads-slide">
+                    <img src="img/banner2.jpg" alt="Iklan 2" class="ads-slide">
+                    <img src="img/banner3.jpg" alt="Iklan 3" class="ads-slide">
+                </div>
+                <div class="ads-dots" id="adsDots"></div>
+            </div>
+        </section>
+
+        <section id="koleksi" class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-primary mb-2">Koleksi Produk</h2>
+                <p class="text-gray-600">Kualitas terbaik, harga terjangkau</p>
+            </div>
+
+            <!-- PRODUK 1 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 relative mb-12">
+                <div class="preorder-badge">PRE ORDER</div>
+
+                <div class="product-slider mb-6">
+                    <div class="product-track" id="track1">
+                        <img src="img/produk1-1.jpg" alt="Tampak Depan" class="product-slide">
+                        <img src="img/produk1-2.jpg" alt="Tampak Belakang" class="product-slide">
+                        <img src="img/produk1-3.jpg" alt="Detail" class="product-slide">
+                        <img src="img/produk1-4.jpg" alt="Saat Dipakai" class="product-slide">
+                    </div>
+                    <button class="slide-btn prev" id="prev1"><i class="fa fa-chevron-left"></i></button>
+                    <button class="slide-btn next" id="next1"><i class="fa fa-chevron-right"></i></button>
+                    <div class="product-dots" id="dots1"></div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-primary mb-2">Gamis Ceruty Premium</h2>
+                <p class="text-preorder font-semibold text-sm mb-1">*Pengiriman 7-14 hari kerja</p>
+                <p class="text-secondary font-bold text-3xl mb-4" id="harga1">Rp 145.000</p>
+
+                <div class="mb-5">
+                    <h4 class="font-semibold mb-2">Deskripsi:</h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        Bahan ceruty babydoll adem, lembut, tidak panas, nyaman dipakai seharian.
+                    </p>
+                </div>
+
+                <div class="mb-5">
+                    <h4 class="font-semibold mb-2">Ukuran & Harga:</h4>
+                    <div>
+                        <span class="option" data-ukuran="All Size" data-ld="110 cm" data-pb="135 cm" data-harga="145000">
+                            All Size<br>
+                            <small>LD 110 cm | PB 135 cm</small><br>
+                            <strong>Rp 145.000</strong>
+                        </span>
+                        <span class="option" data-ukuran="Big Size" data-ld="120 cm" data-pb="140 cm" data-harga="165000">
+                            Big Size<br>
+                            <small>LD 120 cm | PB 140 cm</small><br>
+                            <strong>Rp 165.000</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-2">Warna:</h4>
+                    <div>
+                        <span class="option" data-warna="Hitam">Hitam</span>
+                        <span class="option" data-warna="Putih">Putih</span>
+                        <span class="option" data-warna="Mocca">Mocca</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-3">
+                    <button class="w-full bg-primary hover:bg-dark text-white py-3 rounded-md text-lg font-medium tambah-keranjang" data-id="1" data-nama="Gamis Ceruty Premium">
+                        <i class="fa fa-cart-plus mr-2"></i>Tambah ke Keranjang
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUK 2 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 relative mb-12">
+                <div class="preorder-badge">PRE ORDER</div>
+
+                <div class="product-slider mb-6">
+                    <div class="product-track" id="track2">
+                        <img src="img/produk2-1.jpg" alt="Tampak Depan" class="product-slide">
+                        <img src="img/produk2-2.jpg" alt="Tampak Belakang" class="product-slide">
+                        <img src="img/produk2-3.jpg" alt="Detail" class="product-slide">
+                        <img src="img/produk2-4.jpg" alt="Saat Dipakai" class="product-slide">
+                    </div>
+                    <button class="slide-btn prev" id="prev2"><i class="fa fa-chevron-left"></i></button>
+                    <button class="slide-btn next" id="next2"><i class="fa fa-chevron-right"></i></button>
+                    <div class="product-dots" id="dots2"></div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-primary mb-2">Gamis Rayon Polos</h2>
+                <p class="text-preorder font-semibold text-sm mb-1">*Pengiriman 7-14 hari kerja</p>
+                <p class="text-secondary font-bold text-3xl mb-4" id="harga2">Rp 125.000</p>
+
+                <div class="mb-5">
+                    <h4 class="font-semibold mb-2">Deskripsi:</h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        Bahan rayon super adem, jatuh, tidak menerawang, sangat nyaman dipakai sehari-hari.
+                    </p>
+                </div>
+
+                <div class="mb-5">
+                    <h4 class="font-semibold mb-2">Ukuran & Harga:</h4>
+                    <div>
+                        <span class="option" data-ukuran="All Size" data-ld="112 cm" data-pb="138 cm" data-harga="125000">
+                            All Size<br>
+                            <small>LD 112 cm | PB 138 cm</small><br>
+                            <strong>Rp 125.000</strong>
+                        </span>
+                        <span class="option" data-ukuran="Big Size" data-ld="122 cm" data-pb="142 cm" data-harga="145000">
+                            Big Size<br>
+                            <small>LD 122 cm | PB 142 cm</small><br>
+                            <strong>Rp 145.000</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-2">Warna:</h4>
+                    <div>
+                        <span class="option" data-warna="Hitam">Hitam</span>
+                        <span class="option" data-warna="Putih">Putih</span>
+                        <span class="option" data-warna="Biru Dongker">Biru Dongker</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-3">
+                    <button class="w-full bg-primary hover:bg-dark text-white py-3 rounded-md text-lg font-medium tambah-keranjang" data-id="2" data-nama="Gamis Rayon Polos">
+                        <i class="fa fa-cart-plus mr-2"></i>Tambah ke Keranjang
+                    </button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Modal Keranjang -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeCart">&times;</span>
+            <h3 class="text-xl font-bold text-primary mb-4">Keranjang Belanja</h3>
+            <div id="cartEmpty" class="text-center py-8 text-gray-500">
+                <i class="fa fa-shopping-cart text-5xl mb-3"></i>
+                <p>Keranjang masih kosong</p>
+            </div>
+            <div id="cartContent" class="hidden">
+                <div id="cartItems" class="space-y-4 mb-6"></div>
+                <div class="border-t pt-4 mb-4">
+                    <div class="flex justify-between text-lg font-bold">
+                        <span>Total:</span>
+                        <span class="text-secondary" id="totalHarga">Rp 0</span>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button id="batalPesanan" class="w-1/2 btn-batal py-3 rounded-md font-medium">
+                        <i class="fa fa-times mr-2"></i>Batal Pesanan
+                    </button>
+                    <button id="lanjutPesan" class="w-1/2 bg-success hover:bg-success/90 text-white py-3 rounded-md font-medium">
+                        <i class="fa fa-check mr-2"></i>Lanjut Pesan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Form Pesanan -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeOrder">&times;</span>
+            <h3 class="text-xl font-bold text-primary mb-4">Form Pemesanan</h3>
+            <div class="mb-4 p-3 bg-orange-50 rounded border-l-4 border-preorder">
+                <p class="text-sm text-preorder font-semibold">Produk Pre Order</p>
+                <p class="text-xs text-gray-600">Pengiriman 7-14 hari kerja setelah pembayaran dikonfirmasi</p>
+            </div>
+            <div class="mb-4 p-3 bg-gray-50 rounded">
+                <p class="text-sm text-gray-600">Nomor Faktur:</p>
+                <p class="font-mono font-bold text-secondary" id="invoiceNumber"></p>
+            </div>
+            <form id="orderForm">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Nama Lengkap *</label>
+                    <input type="text" name="nama" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-1 focus:ring-secondary">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Nomor WhatsApp *</label>
+                    <input type="tel" name="wa" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="0812xxxxxxx">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Alamat Lengkap *</label>
+                    <textarea name="alamat" required rows="3" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-1 focus:ring-secondary"></textarea>
+                </div>
+                <div class="mb-4 p-3 bg-gray-50 rounded">
+                    <p class="font-semibold mb-2">Detail Pesanan:</p>
+                    <div id="detailPesanan" class="text-sm space-y-1"></div>
+                    <div class="border-t mt-2 pt-2 font-bold text-secondary">
+                        Total: <span id="totalPesanan">Rp 0</span>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button type="button" id="batalForm" class="w-1/2 btn-batal py-3 rounded-md font-medium">
+                        <i class="fa fa-times mr-2"></i>Batal
+                    </button>
+                    <button type="submit" class="w-1/2 bg-green-600 hover:bg-green-700 text-white py-3 rounded-md font-medium">
+                        <i class="fa fa-whatsapp mr-2"></i>Kirim Pesanan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-gray-300 pt-12 pb-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2026 HijabStore. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
